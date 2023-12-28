@@ -1,5 +1,5 @@
 # Lethal TerminalExtender
-A modding utility for Lethal Company that allows mod to adds their own custom commands to the ship terminal.
+A modding utility for Lethal Company that allows mods to add their own custom commands to the ship terminal.
 
 ![terminalextender](https://github.com/domkalan/lethalterminalextender/raw/main/images/example1.gif)
 
@@ -12,7 +12,7 @@ A modding utility for Lethal Company that allows mod to adds their own custom co
 - [ ] Add an event/callback for when user begins/ends interaction with terminal.
 
 ## Getting Started
-Download the current built .dll file in the releases and include it as a refrence in your local mod project. When packaging your mode, be sure to either include it (local play) or include it as a dependency (mod manager).
+[Download the current built .dll file in the releases](https://github.com/domkalan/LethalTerminalExtender/releases) and include it as a refrence in your local mod project. When packaging your mode, be sure to either include it (local play) or include it as a dependency (mod manager).
 
 Once included in your project, inside your mod you can run the following to add a custom command.
 ```C#
