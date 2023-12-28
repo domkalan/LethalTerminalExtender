@@ -36,6 +36,36 @@ keywordObject.specialKeywordResult = nodeObject;
 Action<Terminal, TerminalNode> callbackAction = (term, node) =>
 {
     // run some function here
+    //
+    //
+
+    // or if you want to take over the terminal completely for custom applications
+    TerminalExtenderUtils.setOnSubmit((string command) =>
+    {
+        // command will be the next raw text command that is submitted
+        // you can call various helper methods such as
+
+        // toggle terminal input state
+        TerminalExtenderUtils.setInputState(true);
+
+        // clear terminal screen
+        TerminalExtenderUtils.cleanTerminalScreen();
+
+        // write to terminal
+        TerminalExtenderUtils.writeToTerminal("Hello again, you typed in: " + command + "\n");
+
+        // play audio
+        TerminalExtenderUtils.playAudioClip(0);
+
+        // instead of writing, you can send a node
+        TerminalExtenderUtils.displayNodeOnTerminal(nodeObject);
+
+        // we are done with custom input, handle the terminal over to the game
+        TerminalExtenderUtils.releaseOnSubmit();
+
+        // in a real world use case, you would not run all of these at once.
+        // they are just here to display what can be done
+    });
 };
 
 TerminalExtenderUtils.addCustomCommand(new TerminalCustomCommand()
