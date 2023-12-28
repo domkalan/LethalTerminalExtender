@@ -25,7 +25,6 @@ namespace LethalTerminalExtender.Patches
     {
         private static List<TerminalCustomCommand> commands = new List<TerminalCustomCommand>();
         
-        private static bool terminalSynced = false;
         private static Terminal terminalInstance = null;
 
         private static Action<string> currentStapleCommand = null;
@@ -36,7 +35,7 @@ namespace LethalTerminalExtender.Patches
         {
             get
             {
-                return terminalSynced;
+                return terminalInstance != null;
             }
             set
             {
@@ -225,11 +224,10 @@ namespace LethalTerminalExtender.Patches
 
         public static void connectToTerminal(Terminal terminal)
         {
-            if (terminalSynced)
+            if (terminalInstance != null)
                 return;
 
-            if (terminalInstance == null)
-                terminalInstance = terminal;
+            terminalInstance = terminal;
 
             // Create our blank node for when the terminal needs to be empty
             TerminalNode blankNodeObj = ScriptableObject.CreateInstance<TerminalNode>();
@@ -269,9 +267,6 @@ namespace LethalTerminalExtender.Patches
                 }
                     
             }
-            
-            // The terminal has been synced, this prevent this from running again
-            terminalSynced = true;
         }
     }
     
